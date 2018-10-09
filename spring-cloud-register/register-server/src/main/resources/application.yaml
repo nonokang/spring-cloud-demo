@@ -1,0 +1,30 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: register-server
+
+eureka:
+  instance:
+    hostname: localhost #设置当前实例的主机名称
+  client:
+    register-with-eureka: true #是否向服务注册中心注册自己
+    fetch-registry: false #是否检索服务
+    service-url:
+      #服务注册中心的配置内容，指定服务注册中心的位置
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+#服务信息设置
+info:
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
+
+management:
+  #port: 8102 #如果不指定，则使用和server相同的端口
+  # close security. 关闭身份验证，否则无法查询出数据
+  security:
+    enabled: false

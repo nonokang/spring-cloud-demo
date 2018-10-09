@@ -1,0 +1,36 @@
+server:
+  port: 8302
+
+spring:
+  application:
+    name: feign-client
+
+#微服务注册中心
+eureka:
+  instance:
+    hostname: localhost #设置当前实例的主机名称
+    ip-address: 127.0.0.1 #设置当前实例的IP地址
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8100/eureka/
+
+management:
+  security:
+    enabled: true #启动身份验证
+
+#安全访问配置
+security:
+  user:
+    name: admin  # 认证用户名
+    password: admin # 认证密码
+   # role:        # 授权角色
+   # - USER
+
+
+#服务信息设置
+info:
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
